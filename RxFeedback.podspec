@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "RxFeedback"
-  s.version      = "4.0.0"
+  s.version      = "4.0.1"
   s.summary      = "Simplest architecture for RxSwift. State + feedback loops."
   s.description  = <<-DESC
     * Straightforward
@@ -32,11 +32,11 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = "10.10"
   s.watchos.deployment_target = "3.0"
   s.tvos.deployment_target = "9.0"
-  s.source       = { :git => "https://github.com/NoTests/RxFeedback.swift.git", :tag => s.version.to_s }
+  s.source       = { :git => "https://github.com/intermedia-net/RxFeedback.swift.git", :tag => s.version.to_s }
   s.source_files  = "Sources/**/*.swift"
   s.frameworks  = "Foundation"
   s.swift_version = '5.0'
 
-  s.dependency 'RxSwift', '~> 6.0'
-  s.dependency 'RxCocoa', '~> 6.0'
+  s.dependency 'RxSwift', '~> 6.6'
+  s.dependency 'RxCocoa', '~> 6.6'
 end

@@ -1,0 +1,22 @@
+fastlane_version "2.172"
+default_platform :ios
+
+platform :ios do
+
+    lane :push_pod do
+        sh('git fetch --tags')
+        sh('./add_pod_repo.sh')
+
+        last_tag = last_git_tag
+        project_root = File.expand_path("..", Dir.pwd)
+        spec_path = File.expand_path("XMPPFramework.podspec", project_root)
+        spec_version = version_get_podspec(path: spec_path)
+
+        if Gem::Version.new(spec_version) > Gem::Version.new(last_tag) then
+            add_git_tag(tag: spec_version)
+            push_git_tags(tag: spec_version)
+            pod_push(path: spec_path, repo: "intermedia-specs", allow_warnings: true)
+            UI.success("Pod with version #{spec_version} pushed")
+        end
+    end
+end
